@@ -4,6 +4,7 @@ import com.example.ecommerceordersystem.dto.CustomerRequestDto;
 import com.example.ecommerceordersystem.dto.CustomerResponseDto;
 import com.example.ecommerceordersystem.model.Customer;
 import com.example.ecommerceordersystem.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<CustomerResponseDto> createCustomer(@RequestBody CustomerRequestDto dto) {
+    public ResponseEntity<CustomerResponseDto> createCustomer(@Valid @RequestBody CustomerRequestDto dto) {
         Customer customer = customerService.createCustomer(dto);
         CustomerResponseDto response = new CustomerResponseDto();
         response.setId(customer.getId());

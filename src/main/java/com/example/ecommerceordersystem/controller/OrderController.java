@@ -3,6 +3,7 @@ package com.example.ecommerceordersystem.controller;
 import com.example.ecommerceordersystem.dto.OrderRequestDto;
 import com.example.ecommerceordersystem.dto.OrderResponseDto;
 import com.example.ecommerceordersystem.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponseDto> placeOrder(@RequestBody OrderRequestDto dto) {
+    public ResponseEntity<OrderResponseDto> placeOrder(@Valid @RequestBody OrderRequestDto dto) {
         return ResponseEntity.ok(orderService.placeOrder(dto));
     }
 
